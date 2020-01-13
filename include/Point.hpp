@@ -10,6 +10,7 @@ class Vector;
 
 class Point : private TripletContainer {
     public:
+        Point(const double x, const double y, const double z);
         Point(const Point & p);
         Point(const Point * p);
 
@@ -23,6 +24,9 @@ class Point : private TripletContainer {
 
         Vector getVectorTo  (const Point & end  ) const;
         Vector getVectorFrom(const Point & start) const;
+
+        void  translate     (const Vector & vector);
+        Point getTranslation(const Vector & vector) const;
 };
 
 std::istream & operator >> (std::istream & is,       Point & p);

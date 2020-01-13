@@ -3,9 +3,10 @@
 
 #include <iostream>
 
+Point::Point(const double x, const double y,const double z) : TripletContainer(x, y, z) {}
 Point::Point(const Point & p) : TripletContainer( p) {}
-
 Point::Point(const Point * p) : TripletContainer(*p) {}
+
 
 double Point::getX() const {
     return this->operator[](0);
@@ -48,6 +49,22 @@ Vector Point::getVectorFrom(const Point & start) const {
         this->getZ() - start.getZ()
     );
 }
+
+
+void  Point::translate     (const Vector & vector)       {
+    this->setX(this->getX() + vector.getX());
+    this->setY(this->getY() + vector.getY());
+    this->setZ(this->getZ() + vector.getZ());
+}
+
+Point Point::getTranslation(const Vector & vector) const {
+    return Point(
+        this->getX() + vector.getX(),
+        this->getY() + vector.getY(),
+        this->getZ() + vector.getZ()
+    );
+}
+
 
 std::istream & operator >> (std::istream & is,       Point & p) {
     double stamp;
