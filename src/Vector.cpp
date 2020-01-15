@@ -113,6 +113,14 @@ Vector Vector::operator * (const double t) const {
     );
 }
 
+Vector operator * (const double t, const Vector & v) {
+    return Vector(
+        v.getX() * t,
+        v.getY() * t,
+        v.getZ() * t
+    );
+}
+
 
 double Vector::dot  (const Vector & v) const {
     return (
