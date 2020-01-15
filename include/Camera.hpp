@@ -5,6 +5,7 @@
 #include "Vector.hpp"
 #include "Shape.hpp"
 #include "Scene.hpp"
+#include "Ray.hpp"
 
 #include <string>
 
@@ -33,6 +34,8 @@ class Camera : public Shape {
         void        setVpHeight(const Vector &        vpHeight);
 
         void trace(const std::string & filename, const Scene & scene) const;
+
+        virtual bool isHitByRay(const Ray & ray) const;
 };
 
 #endif

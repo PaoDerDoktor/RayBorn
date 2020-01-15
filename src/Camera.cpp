@@ -76,3 +76,8 @@ void Camera::trace(const std::string & filename, const Scene & scene) const {
         }
     }
 }
+
+
+bool Camera::isHitByRay(const Ray & ray) const {
+    return false;
+}

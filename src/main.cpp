@@ -1,16 +1,30 @@
 #include <iostream>
 
 #include "../include/Vector.hpp"
+#include "../include/Point.hpp"
+#include "../include/Camera.hpp"
+#include "../include/Sphere.hpp"
+#include "../include/Scene.hpp"
 
 int main(int argc, char *argv[]) {
-	Vector t(1, 2, 3);
-	Vector u(3, 2, 1);
+	Point camCenter(0, 0, 0);
+	Vector camDirection(0, 0, 1);
+	Point camLLC(-2, -1, 1);
+	Vector camVpWidth(4, 0, 0);
+	Vector camVpHeight(0, 2, 0);
+	int pxWidth(200);
+	int pxHeight(50);
 
-	Vector v = t+u;
+	Point sphereCenter(0, 0, 1);
+	double sphereRadius(0.5);
 
-	std::cout << t << std::endl;
-	std::cout << t[0] << std::endl;
-	std::cout << v << std::endl;
+	Camera cam(camCenter, camDirection, pxWidth, pxHeight, camLLC, camVpWidth, camVpHeight);
 
-	std::cin.get();
+	Sphere sphere(sphereCenter, sphereRadius);
+
+	Scene scene;
+
+	scene.addShape(&sphere);
+
+	cam.trace("render.ppm", scene);
 }
