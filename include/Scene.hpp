@@ -9,22 +9,22 @@
 
 class Scene {
     private:
-        std::vector<Shape> shapes;
+        std::vector<Shape *> shapes;
     
     public:
-        Scene(const std::vector<Shape> & shapes);
+        Scene(const std::vector<Shape  *> & shapes);
         Scene();
 
-        std::vector<Shape> getShapes() const;
-        int                getSize()   const;
+        std::vector<Shape *> getShapes() const;
+        int                  getSize()   const;
 
-        void setShapes(const std::vector<Shape> & shapes);
+        void setShapes(const std::vector<Shape *> & shapes);
 
-        Shape & operator [] (int i);
+        Shape * operator [] (int i);
 
-        void addShape(Shape & shape);
+        void addShape(Shape * shape);
 
-        Shape & removeShape(const int i);
+        Shape * removeShape(const int i);
 
         bool hitTest(const Ray & ray) const;
 };
